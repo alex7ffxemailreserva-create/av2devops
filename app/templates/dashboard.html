@@ -2,15 +2,15 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard — Indicadores Econômicos (Dados Abertos BCB)</title>
+  <title>Dashboard — Taxas de Juros Bradesco (Dados Abertos BCB)</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 </head>
 <body>
   <header>
-    <h1>📈 Indicadores Econômicos do Brasil</h1>
+    <h1>🏦 Taxas de Juros — Banco Bradesco S.A.</h1>
     <p class="subtitle">
-      Dados abertos do Banco Central (SGS) · cache renovado a cada {{ data.cache_hours }}h ·
+      Dados abertos do Banco Central (CNPJ 60746948) · cache renovado a cada {{ data.cache_hours }}h ·
       persistidos em PostgreSQL gerenciado pela Aiven.io
     </p>
   </header>
@@ -41,7 +41,7 @@
   </section>
 
   <section class="chart-container">
-    <h2>Séries históricas (últimos {{ data.indicators[0].labels|length }} pontos)</h2>
+    <h2>Histórico das modalidades de crédito (últimos {{ data.indicators[0].labels|length }} pontos)</h2>
     <canvas id="indicatorsChart" height="90"></canvas>
   </section>
 
@@ -55,7 +55,7 @@
 
   <script>
     const indicators = {{ data.indicators | tojson }};
-    const colors = ["#4f46e5", "#16a34a", "#dc2626"];
+    const colors = ["#cc092f", "#2563eb", "#16a34a"];
 
     const datasets = indicators.map((ind, i) => ({
       label: ind.name + " (" + ind.unit + ")",
